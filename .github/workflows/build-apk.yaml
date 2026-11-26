@@ -1,6 +1,4 @@
-      - name: Build Debug APK
-        run: |
-          gradle assembleDebug --no-daemon --stacktrace 2>&1 | tail -n 35
+name: Build Android APK
 
 on:
   workflow_dispatch:
@@ -23,14 +21,8 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Install Gradle 8.5
-        run: |
-          curl -sSL https://services.gradle.org/distributions/gradle-8.5-bin.zip -o gradle.zip
-          unzip -q gradle.zip -d /opt/gradle
-          ln -s /opt/gradle/gradle-8.5/bin/gradle /usr/local/bin/gradle
-
       - name: Build Debug APK
-        run: gradle assembleDebug --no-daemon --info
+        run: gradle assembleDebug --no-daemon --stacktrace 2>&1 | tail -n 35
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
