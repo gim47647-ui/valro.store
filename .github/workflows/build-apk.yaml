@@ -1,4 +1,7 @@
-name: Build Android APK
+      - name: Build Debug APK
+        run: |
+          gradle assembleDebug --no-daemon --stacktrace 2>&1 | tail -n 35
+
 
 on:
   workflow_dispatch:
