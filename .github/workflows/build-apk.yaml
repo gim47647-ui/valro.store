@@ -28,7 +28,7 @@ jobs:
           ln -s /opt/gradle/gradle-8.5/bin/gradle /usr/local/bin/gradle
 
       - name: Build Debug APK
-        run: gradle assembleDebug --no-daemon --stacktrace
+        run: gradle assembleDebug --no-daemon --info
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
