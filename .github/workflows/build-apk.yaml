@@ -1,4 +1,7 @@
-name: Build Android APK
+      - name: Build Debug APK
+        run: |
+          gradle assembleDebug --no-daemon --console=plain 2>&1 | grep -E "error:|FAILURE:|What went wrong:|Execution failed" -A 5 || true
+          gradle assembleDebug --no-daemon
 
 on:
   workflow_dispatch:
